@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COLLAB HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Nerko One;
+            font-family: 'Nerko One', Arial, sans-serif;
             margin: 0;
             padding: 0;
             color:#E9BE5F;
@@ -37,6 +38,7 @@
         }
         .container {
             padding: 20px;
+            padding-bottom: 60px; /* Prevent footer overlap */
         }
         .section {
             margin-bottom: 20px;
@@ -52,7 +54,7 @@
             color: #595C56;
             text-align: center;
             padding: 10px 0;
-            position: fixed;
+            position: static; /* Changed from fixed to static */
             width: 100%;
             bottom: 0;
         }
@@ -63,7 +65,7 @@
         <h1>COLLAB HUB</h1>
         <nav>
             <a href="#home">Home</a>
-            <a href="#What We Offer">What We Offer</a>
+            <a href="#What%20We%20Offer">What We Offer</a>
             <a href="#about">About Us</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -74,8 +76,7 @@
             <h2>Welcome to COLLAB HUB</h2>
             <p>Your growth is our priority. CollabHub connects influencers, brands, and organizers so the right opportunities find you — instantly.</p>
         </section>
-
-        <section id="What We Offer" class="section">
+        <section id="what-we-offer" class="section">
             <h2>What We Offer</h2>
             <ul>
 <li>CollabHub — What We Offer </li>
@@ -85,6 +86,7 @@
 <li> AI‑Powered Recommendation Engine</li>
 <li> Clean, Modern Collaboration Dashboard</li>
             </ul>
+        </section>
         </section>
 
         <section id="about" class="section">
@@ -105,9 +107,17 @@ Created by Tharun, Vihan, and Manthan</p>
         <section id="contact" class="section">
             <h2>Contact Us</h2>
             <p>Address: 123 brand St, influencer City, HC 12345</p>
-            <p>Phone: +91-96862 89127</p>
-            <p>Email: vihant724@gmail.com</p>
+            <form action="mailto:vihant724@gmail.com" method="post" enctype="text/plain">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea><br>
+                <button type="submit">Send</button>
+            </form>
         </section>
+    </div>
     </div>
 
     <footer>
