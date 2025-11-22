@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COLLAB HUB — Creators • Brands • Events</title>
+
+  <!-- Fonts: Montserrat for display, Inter for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-deep: #0a0a0f;
+      --bg-surface: #12121a;
+      --bg-card: rgba(22, 22, 32, 0.85);
+      --accent-primary: #fbbf24;
+      --accent-bright: #fde68a;
+      --accent-warm: #fb923c;
+      --text-bright: #f9fafb;
+      --text-mid: #d1d5db;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.15);
+      --glow-primary: rgba(251, 191, 36, 0.4);
+      --glow-warm: rgba(251, 146, 60, 0.35);
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 40px;
+      --spacing-xl: 64px;
+      --spacing-2xl: 96px;
+      --spacing-3xl: 128px;
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(ellipse at top, #1a1a2e 0%, #0a0a0f 50%, #000000 100%);
+      color: var(--text-bright);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Animated gradient background orbs */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.5;
+      z-index: -1;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    body::before {
+      width: 600px;
+      height: 600px;
+      top: -200px;
+      left: -150px;
+      background: radial-gradient(circle, #fb923c, #fbbf24);
+      animation: float1 30s infinite alternate ease-in-out;
+    }
+
+    body::after {
+      width: 500px;
+      height: 500px;
+      bottom: -150px;
+      right: -100px;
+      background: radial-gradient(circle, #8b5cf6, #3b82f6);
+      animation: float2 28s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes float1 {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(80px, -60px, 0) scale(1.1);
+      }
+      100% {
+        transform: translate3d(-60px, 60px, 0) scale(0.95);
+      }
+    }
+
+    @keyframes float2 {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(-70px, 50px, 0) scale(1.08);
+      }
+      100% {
+        transform: translate3d(50px, -50px, 0) scale(0.92);
+      }
+    }
+
+    /* Container */
+    .page-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: var(--spacing-sm) 0;
+    }
+
+    .header-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fbbf24, #fb923c, #8b5cf6);
+      display: grid;
+      place-items: center;
+      position: relative;
+      box-shadow: 0 8px 24px var(--glow-primary);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .logo-icon::after {
+      content: "";
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      background: radial-gradient(circle at 30% 30%, #fde68a, #fbbf24 60%, #0a0a0f 100%);
+    }
+
+    .logo:hover .logo-icon {
+      transform: translateY(-2px) rotate(5deg);
+      box-shadow: 0 12px 32px var(--glow-primary);
+    }
+
+    .logo-text h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: linear-gradient(120deg, var(--accent-bright), var(--accent-primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+    }
+
+    .logo-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-top: 2px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    nav a {
+      position: relative;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color var(--transition-fast), background var(--transition-fast);
+      overflow: hidden;
+    }
+
+    nav a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(251, 191, 36, 0.15), rgba(139, 92, 246, 0.1));
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      border-radius: inherit;
+    }
+
+    nav a:hover {
+      color: var(--accent-bright);
+    }
+
+    nav a:hover::before {
+      opacity: 1;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-warm));
+      color: var(--bg-deep);
+      font-weight: 700;
+      padding: 10px 24px;
+      box-shadow: 0 8px 20px var(--glow-primary);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px var(--glow-primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--spacing-xl);
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px 6px 6px;
+      border-radius: 999px;
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      margin-bottom: var(--spacing-md);
+      animation: fadeSlideUp 0.8s ease-out;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .badge-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fde68a, #fbbf24);
+      box-shadow: 0 0 20px var(--glow-primary);
+      position: relative;
+    }
+
+    .badge-dot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8), transparent 60%);
+    }
+
+    .hero-badge span {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+      font-weight: 600;
+    }
+
+    .hero h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--spacing-md);
+      background: linear-gradient(120deg, #fde68a, #fbbf24, #fb923c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fadeSlideUp 1s ease-out 0.2s both;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      margin-bottom: var(--spacing-lg);
+      line-height: 1.7;
+      animation: fadeSlideUp 1s ease-out 0.4s both;
+    }
+
+    .hero p strong {
+      color: var(--accent-bright);
+      font-weight: 600;
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+      animation: fadeSlideUp 1s ease-out 0.6s both;
+    }
+
+    .btn-primary {
+      padding: 16px 32px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-warm));
+      color: var(--bg-deep);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 32px var(--glow-primary);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.3), transparent 50%, rgba(255, 255, 255, 0.2));
+      transform: translateX(-100%);
+      transition: transform 0.6s ease-out;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px var(--glow-primary);
+    }
+
+    .btn-primary:hover::after {
+      transform: translateX(100%);
+    }
+
+    .btn-secondary {
+      padding: 16px 28px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-bright);
+      border: 1px solid var(--border-medium);
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-medium);
+      transform: translateY(-2px);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: var(--spacing-md);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      animation: fadeSlideUp 1s ease-out 0.8s both;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #10b981, #059669);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);
+    }
+
+    /* Hero Visual Card */
+    .hero-visual {
+      position: relative;
+      animation: fadeSlideUp 1s ease-out 0.5s both;
+    }
+
+    .visual-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(24px);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-medium);
+      padding: var(--spacing-md);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+      transform: perspective(1200px) rotateY(-8deg) rotateX(4deg);
+      transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+
+    .visual-card:hover {
+      transform: perspective(1200px) rotateY(0deg) rotateX(0deg);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .card-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6ee7b7;
+    }
+
+    .status-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #10b981, #059669);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);
+    }
+
+    .avatar-group {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .avatars {
+      display: flex;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--bg-deep);
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .avatar:nth-child(2) {
+      margin-left: -12px;
+    }
+
+    .avatar:nth-child(3) {
+      margin-left: -12px;
+    }
+
+    .avatar:nth-child(1) {
+      background-image: url("https://images.pexels.com/photos/3760852/pexels-photo-3760852.jpeg?auto=compress&cs=tinysrgb&w=400");
+    }
+
+    .avatar:nth-child(2) {
+      background-image: url("https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400");
+    }
+
+    .avatar:nth-child(3) {
+      background-image: url("https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=400");
+    }
+
+    .avatar-label {
+      font-size: 0.875rem;
+      color: var(--accent-bright);
+      line-height: 1.3;
+    }
+
+    .avatar-label span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .progress-section {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 87%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #10b981, #fbbf24);
+      box-shadow: 0 0 16px var(--glow-primary);
+      animation: progressGrow 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 0.8s;
+    }
+
+    @keyframes progressGrow {
+      from {
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .tag {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      color: var(--accent-bright);
+      font-weight: 500;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--accent-bright);
+    }
+
+    .stat-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding-top: var(--spacing-xs);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .card-footer strong {
+      color: var(--accent-bright);
+    }
+
+    /* Sections */
+    section {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto var(--spacing-xl);
+    }
+
+    .section-label {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-bright);
+      margin-bottom: var(--spacing-sm);
+      font-weight: 600;
+    }
+
+    .section-header h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--spacing-sm);
+      background: linear-gradient(120deg, var(--accent-bright), var(--accent-primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .feature-card.visible {
+      animation: fadeSlideUp 0.8s ease-out forwards;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+      border-color: rgba(251, 191, 36, 0.5);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(139, 92, 246, 0.15));
+      display: grid;
+      place-items: center;
+      font-size: 1.75rem;
+      margin-bottom: var(--spacing-sm);
+      box-shadow: 0 8px 20px rgba(251, 191, 36, 0.2);
+    }
+
+    .feature-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-xs);
+      color: var(--text-bright);
+    }
+
+    .feature-card p {
+      color: var(--text-mid);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* About Section */
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+    }
+
+    .about-content p {
+      font-size: 1.125rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .about-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-content strong {
+      color: var(--accent-bright);
+      font-weight: 600;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--spacing-xl);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      background: var(--bg-card);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+    }
+
+    .form-group {
+      margin-bottom: var(--spacing-md);
+    }
+
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-mid);
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-medium);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-bright);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--accent-primary);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 0 3px var(--glow-primary);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .info-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-xs);
+      color: var(--accent-bright);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .info-card p {
+      color: var(--text-mid);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: var(--spacing-xl) 0 var(--spacing-md);
+      border-top: 1px solid var(--border-subtle);
+      margin-top: var(--spacing-2xl);
+    }
+
+    .footer-content {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .footer-logo .logo-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .footer-logo .logo-icon::after {
+      width: 20px;
+      height: 20px;
+    }
+
+    .footer-text {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding-top: var(--spacing-md);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-card {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding: var(--spacing-xl) 0;
+      }
+
+      .hero h2 {
+        font-size: 2.25rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      section {
+        padding: var(--spacing-xl) 0;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Scroll reveal animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <a href="#home" class="logo">
+        <div class="logo-icon"></div>
+        <div class="logo-text">
+          <h1>Collab Hub</h1>
+          <p>Creators • Brands • Events</p>
+        </div>
+      </a>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="page-container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <div class="badge-dot"></div>
+            <span>AI-Powered Collaboration Engine</span>
+          </div>
+
+          <h2>Collabs that feel like destiny</h2>
+
+          <p>
+            Collab Hub <strong>instantly connects influencers, brands, and event organizers</strong> 
+            with the exact partners they need — no cold DMs, no spam, just precision matching 
+            powered by intelligent algorithms.
+          </p>
+
+          <div class="hero-cta">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              Request Early Access
+            </button>
+            <button class="btn-secondary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
+              <span>▶</span> Explore Features
+            </button>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <div class="status-dot"></div>
+              <span>Live beta with 3,000+ active users</span>
+            </div>
+            <div class="hero-meta-item">
+              <span>Zero spam • Instant matches</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-card">
+            <div class="card-header">
+              <div class="card-title">Real-Time Collaboration Matrix</div>
+              <div class="status-badge">
+                <div class="status-badge-dot"></div>
+                Live Matching
+              </div>
+            </div>
+
+            <div class="avatar-group">
+              <div class="avatars">
+                <div class="avatar"></div>
+                <div class="avatar"></div>
+                <div class="avatar"></div>
+              </div>
+              <div class="avatar-label">
+                3-way match confirmed
+                <span>Beauty brand • Creator • Event host</span>
+              </div>
+            </div>
+
+            <div class="progress-section">
+              <div class="progress-header">
+                <span>Match confidence</span>
+                <span>87%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
+              </div>
+            </div>
+
+            <div class="tags">
+              <div class="tag">AI-Powered Matching</div>
+              <div class="tag">Smart Profiles</div>
+              <div class="tag">Live Dashboard</div>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-label">Creators</div>
+                <div class="stat-value">2,468</div>
+                <div class="stat-sub">active profiles</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Brands</div>
+                <div class="stat-value">892</div>
+                <div class="stat-sub">campaign slots</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Events</div>
+                <div class="stat-value">156</div>
+                <div class="stat-sub">seeking sponsors</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span>Avg match time: <strong>2.4 min</strong></span>
+              <span>Built by Tharun • Vihan • Manthan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="page-container">
+      <div class="section-header">
+        <div class="section-label">What We Offer</div>
+        <h3>Everything you need to connect and collaborate</h3>
+        <p>
+          Our intelligent platform automates discovery, reduces noise, and puts you 
+          in front of the right opportunities at the right time.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">🎯</div>
+          <h4>Intelligent Matching Engine</h4>
+          <p>
+            AI-powered algorithm that understands niche, audience fit, and brand alignment 
+            to deliver precision matches between influencers and brands in real-time.
+          </p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">🎪</div>
+          <h4>Sponsor & Guest Discovery</h4>
+          <p>
+            Event organizers get instant access to relevant sponsors and chief guests 
+            based on event type, audience, and location — all in one centralized dashboard.
+          </p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">📊</div>
+          <h4>Smart Profile System</h4>
+          <p>
+            Create living, searchable profiles that highlight your unique strengths, 
+            audience demographics, and collaboration preferences — no manual updating needed.
+          </p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">🤖</div>
+          <h4>AI Recommendation Engine</h4>
+          <p>
+            Machine learning model that continuously improves based on successful 
+            collaborations, ensuring every match gets smarter and more accurate over time.
+          </p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">⚡</div>
+          <h4>Real-Time Notifications</h4>
+          <p>
+            Get instant alerts when a high-potential match appears, with confidence 
+            scores and detailed reasoning so you can act fast on the best opportunities.
+          </p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">🔒</div>
+          <h4>Zero Spam Guarantee</h4>
+          <p>
+            Our verification system and AI filters ensure only relevant, high-quality 
+            collaboration requests reach you — no cold pitches, no noise, just signal.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="page-container">
+      <div class="section-header">
+        <div class="section-label">Our Story</div>
+        <h3>Fixing discovery in the creator economy</h3>
+      </div>
+
+      <div class="about-content reveal">
+        <p>
+          Discovery is fundamentally broken. Creators scroll endlessly through DMs 
+          hoping to find legitimate brand deals. Brands blast cold emails into the void, 
+          praying for responses. Event organizers hunt for sponsors and chief guests 
+          in chaotic spreadsheets and LinkedIn searches.
+        </p>
+
+        <p>
+          Collab Hub solves this with a <strong>real-time, AI-powered matching engine</strong> 
+          that aligns creators, brands, and events the moment a high-quality fit emerges. 
+          No guesswork. No noise. Just intelligent matches that make sense for everyone involved.
+        </p>
+
+        <p>
+          We built this platform because we experienced the pain ourselves. As creators 
+          and organizers, we wasted countless hours chasing down opportunities that went nowhere. 
+          So we created the system we wish existed: fast, smart, and ruthlessly focused 
+          on meaningful partnerships.
+        </p>
+
+        <p>
+          Created by <strong>Tharun, Vihan, and Manthan</strong>, Collab Hub is designed 
+          for the new creator economy — where speed, precision, and authenticity matter more than ever.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="page-container">
+      <div class="section-header">
+        <div class="section-label">Get In Touch</div>
+        <h3>Ready to start collaborating?</h3>
+        <p>
+          Request early access and join thousands of creators, brands, and organizers 
+          who are already discovering perfect-fit partnerships.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-form reveal">
+          <form action="mailto:vihant724@gmail.com" method="post" enctype="text/plain">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required placeholder="Enter your full name" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Tell us about your goals</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                required 
+                placeholder="Are you a creator, brand, or organizer? What kind of collaborations are you looking for?"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%;">
+              Send Request
+            </button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <div class="info-card reveal">
+            <h4>📍 Location</h4>
+            <p>123 Brand Street, Influencer City, HC 12345</p>
+          </div>
+
+          <div class="info-card reveal">
+            <h4>⏱️ Response Time</h4>
+            <p>
+              We typically respond to early access requests within 24 hours. 
+              Priority given to profiles with social handles and audience metrics.
+            </p>
+          </div>
+
+          <div class="info-card reveal">
+            <h4>💡 Pro Tip</h4>
+            <p>
+              Include your <strong>social handles</strong>, <strong>niche</strong>, 
+              and <strong>audience size</strong> in your message so your first matches 
+              feel eerily accurate from day one.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <div class="logo-icon"></div>
+        <div class="logo-text">
+          <h1>Collab Hub</h1>
+        </div>
+      </div>
+
+      <p class="footer-text">
+        Intelligent collaboration platform for creators, brands, and events. 
+        Built for the future of the creator economy.
+      </p>
+
+      <p class="footer-copy">
+        &copy; 2025 Collab Hub. All rights reserved. Created by Tharun, Vihan, and Manthan.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scroll reveal script -->
+  <script>
+    // Intersection Observer for scroll reveal
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all reveal elements
+    document.querySelectorAll('.reveal, .feature-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
+
