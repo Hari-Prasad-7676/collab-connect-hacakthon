@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile Setup</title>
+    <link rel="stylesheet" href="style.css">
+     <!-- Fonts -->
+  <link href=https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Orbitron', sans-serif;
+        background: linear-gradient(135deg, #00ffe1, #d400ff, #063bda);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .Container {
+        background: #000000;
+        backdrop-filter: blur(12px);
+        border-radius: 15px;
+        padding: 30px;
+        width: 350px;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        color: #d400ff;
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #00ffe1;
+        font-size: 24px;
+        letter-spacing: 1px;
+      }
+
+      label, input, select, button {
+        display: block;
+        margin-top: 12px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        background: rgb(143, 135, 135);
+        color: rgb(0, 0, 0);
+        font-size: 14px;
+      }
+      
+      input::placeholder {
+        color: #000000;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        background: #00ffe1;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #00bcd4;
+        transform: translateY(-2px);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class = "Container"> 
+      <h2> Complete your profile </h2>
+
+      <label>Name</label>
+      <input type = "text" id="name">
+
+      <label>Role</label>
+      <select id = "role">
+        <option value = "Influencer"> Influencer</option>
+        <option value = "Organiser"> Organiser</option>
+        <option value = "Sponsors"> Sponsors </option>
+      </select>
+      
+      <label> Niche </label>
+      <input type="text" id="tags" placeholder="tech,fashion,fitness">
+      
+      <label> Followers count </label>
+      <input type="number" id="Followers">
+
+      <label> category </label>
+      <select id = "category">
+        <option value = "Tech"> Tech</option>
+        <option value = "Food"> Food</option>
+        <option value = "Fitness"> Fitness </option>
+        <option value = "Education"> Edu </option>
+        <option value = "Events"> Events </option>
+      </select>
+      
+      <button id="saveprofileBn"> Save Profile </button>
+    </div>
+    <script type = "module" src="./js/profile.js"></script>
+  </body>
+</html>
