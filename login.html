@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Profile Setup</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+
     <style>
       body {
         margin: 0;
@@ -15,6 +16,7 @@
         justify-content: center;
         align-items: center;
       }
+
       .Container {
         background: #000000;
         backdrop-filter: blur(12px);
@@ -25,6 +27,7 @@
         color: #d400ff;
         animation: fadeIn 0.8s ease-out;
       }
+
       h2 {
         text-align: center;
         margin-bottom: 20px;
@@ -32,13 +35,15 @@
         font-size: 24px;
         letter-spacing: 1px;
       }
-      label, input, select, button {
+
+      label, input, button {
         display: block;
         margin-top: 12px;
         font-size: 14px;
         font-weight: 600;
       }
-      input, select {
+
+      input {
         width: 100%;
         padding: 10px;
         margin-top: 5px;
@@ -47,11 +52,8 @@
         outline: none;
         background: rgb(143, 135, 135);
         color: #000;
-        font-size: 14px;
       }
-      input::placeholder {
-        color: #000;
-      }
+
       button {
         width: 100%;
         margin-top: 20px;
@@ -64,52 +66,34 @@
         cursor: pointer;
         transition: 0.3s;
       }
+
       button:hover {
         background: #00bcd4;
         transform: translateY(-2px);
       }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
     </style>
   </head>
-  <body>
-    <div class="Container"> 
-      <h2>Complete your profile</h2>
-      <form id="profileForm">
-        <label>Name</label>
-        <input type="text" id="name" required>
-        <label>Role</label>
-        <select id="role" required>
-          <option value="Influencer">Influencer</option>
-          <option value="Organiser">Organiser</option>
-          <option value="Sponsors">Sponsors</option>
-        </select>
-        <label>Niche</label>
-        <input type="text" id="tags" placeholder="tech,fashion,fitness">
-        <label>Followers count</label>
-        <input type="number" id="Followers">
-        <label>Category</label>
-        <select id="category">
-          <option value="Tech">Tech</option>
-          <option value="Food">Food</option>
-          <option value="Fitness">Fitness</option>
-          <option value="Education">Edu</option>
-          <option value="Events">Events</option>
-        </select>
-        <button type="button" id="saveBtn"  onclick="location.href='influencer_dashboard.html'">Save Profile</button>
-      </form>
-    </div>
-    <script type="module" src="./firebase.js"></script>
-<script type="module" src="./profile.js"></script>
 
+  <body>
+    <div class="Container">
+      <h2>Login</h2>
+
+      <form id="LoginForm">
+
+        <label>Email</label>
+        <input type="email" id="email" required>
+
+        <label>Password</label>
+        <input type="password" id="password" required>
+
+        <button type="button" id="loginBtn" onclick="location.href='organiser_dashboard.html'">Login</button>
+
+      </form>
+
+    </div>
+
+   <script type="module" src="./js/firebase.js"></script>
+<script type="module" src="./js/profile.js"></script>
 
   </body>
 </html>
