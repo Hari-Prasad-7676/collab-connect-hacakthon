@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COLLAB HUB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+  <link href=https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Nerko One', Arial, sans-serif;
+
+            font-family: 'orbitron', sans-serif;
+            
             margin: 0;
             padding: 0;
-            color:#E9BE5F;
-            background-color: #282823;
+            color:#00ffe1;
+            background-color: #252542;
         }
         header {
-            background-color: #f5e8b6;
-            color: #595C56;
+            background-color: #000000;
+            color: #00ffe1;
             padding: 10px 0;
             text-align: center;
         }
@@ -29,7 +32,7 @@
             text-decoration: none;
             padding: 14px 20px;
             display: inline-block;
-            background-color: #f5e8b6;
+            background-color: #8a00c4;
             border-radius: 5px;
             margin: 5px;
         }
@@ -38,57 +41,129 @@
         }
         .container {
             padding: 20px;
-            padding-bottom: 60px; /* Prevent footer overlap */
         }
         .section {
             margin-bottom: 20px;
-            background-color: #b3a57c;
+            background-color: #000000;
             border-radius: 8px;
             padding: 15px;
         }
-        
-
 
         footer {
-            background-color: #fcc728;
+            background-color: #d400ff;
             color: #595C56;
             text-align: center;
             padding: 10px 0;
-            position: static; /* Changed from fixed to static */
+            position: fixed;
             width: 100%;
             bottom: 0;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>COLLAB HUB</h1>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#What%20We%20Offer">What We Offer</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+   <header>
+    <style>
+        header {
+            position: relative;
+            background-color: #000000;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #282823;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            background-color: #9b5389;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        nav a:hover {
+            background-color: #00ffe1;
+        }
+
+        .login-button {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .login-button button {
+            background-color: #9b5389;
+            color: #30312e;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .login-button button:hover {
+            background-color: #00ffe1;
+        }
+    </style>
+
+    <div class="login-button">
+        <button onclick="location.href='login.html'">Login</button>
+    </div>
+
+    <h1>COLLAB HUB</h1>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#What We Offer">What We Offer</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
 
     <div class="container">
-        <section id="home" class="section">
-            <h2>Welcome to COLLAB HUB</h2>
-            <p>Your growth is our priority. CollabHub connects influencers, brands, and organizers so the right opportunities find you — instantly.</p>
-        </section>
-        <section id="what-we-offer" class="section">
-            <h2>What We Offer</h2>
-            <ul>
-<li>CollabHub — What We Offer </li>
-<li> Intelligent Influencer–Brand Matching</li> 
-<li> Sponsor & Chief‑Guest Discovery for Event Organizers</li>
-<li> Smart Profile System</li>
-<li> AI‑Powered Recommendation Engine</li>
-<li> Clean, Modern Collaboration Dashboard</li>
-            </ul>
-        </section>
-        </section>
+      <section id="home" class="section" style="display: flex; align-items: center; gap: 20px;">
+    
+    <div style="flex: 1;">
+        <h1>Welcome to COLLAB HUB</h1>
+        <h2>Your growth is our priority. CollabHub connects influencers, brands, and organizers so the right opportunities find you — instantly.</h2>
+    </div>
 
+    <div style="flex: 1; text-align: center;">
+        <img src="https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6InVzZXItdlBGa0FQdUI4WGNPUlpGVzRTdHQ5UXM0OmZpbGVfMDAwMDAwMDAyMTNjNzFmNzlhOGQ5MmY2NWM0ZWRiOTciLCJ0cyI6IjIwNDE0IiwicCI6InB5aSIsImNpZCI6IjEiLCJzaWciOiI1OGU0OWZlMDM5ZThlZGU5ODkwNjlmNzQ2YjQyZDA2ZWEzNGViYTZhYmVhZDBjZmIyNDVkYmRhMGNmOGRlZGUzIiwidiI6IjAiLCJnaXptb19pZCI6bnVsbCwiY3AiOm51bGwsIm1hIjpudWxsfQ==" 
+             style="width: 100%; max-width: 1000px; border-radius: 12px;">
+    </div>
+
+</section>
+ 
+ 
+
+        <hr>
+
+        <section id="What We Offer" class="section" 
+style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+
+    <!-- TEXT SIDE -->
+    <div style="flex: 1;">
+        <h1>What We Offer</h1>
+        <ul>
+            <li><h2>Intelligent Influencer–Brand Matching</h2></li>
+            <li><h2>Sponsor & Chief-Guest Discovery for Event Organizers</h2></li>
+            <li><h2>Smart Profile System</h2></li>
+            <li><h2>AI-Powered Recommendation Engine</h2></li>
+            <li><h2>Clean, Modern Collaboration Dashboard</h2></li>
+        </ul>
+    </div>
+
+    <!-- IMAGE SIDE -->
+    <div style="flex: 1; text-align: center;">
+        <img 
+            src="https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6InVzZXItdlBGa0FQdUI4WGNPUlpGVzRTdHQ5UXM0OmZpbGVfMDAwMDAwMDA2Mzk0NzFmN2FkODg0NGU0ZjUxMzI2NDgiLCJ0cyI6IjIwNDE0IiwicCI6InB5aSIsImNpZCI6IjEiLCJzaWciOiJjMTNmZWVlMTAxN2NkNzJiY2Y2NTQwNjM3NjczZjgxNmIyMjQyYTljNjJmY2Q5ZTUwM2JmNDM1NTdlYmVmOWUxIiwidiI6IjAiLCJnaXptb19pZCI6bnVsbCwiY3AiOm51bGwsIm1hIjpudWxsfQ==" 
+            style="width: 100%; max-width: 450px; border-radius: 12px;">
+    </div>
+
+</section>
+
+       <hr>
         <section id="about" class="section">
             <h2>About Us</h2>
             <p>
@@ -103,22 +178,19 @@ Creators. Brands. Events.
 All connected in one place.
 Created by Tharun, Vihan, and Manthan</p>
         </section>
-
-        <section id="contact" class="section">
+        <hr>
+        <section id="contact" class="section"style="display: flex; align-items: center; gap: 20px;">
+         <div style="flex: 1;">
             <h2>Contact Us</h2>
             <p>Address: 123 brand St, influencer City, HC 12345</p>
-            <form action="mailto:vihant724@gmail.com" method="post" enctype="text/plain">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br>
-                <label for="email">Your Email:</label>
-                <input type="email" id="email" name="email" required><br>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea><br>
-                <button type="submit">Send</button>
-            </form>
+            <p>Phone: +91-96862 89127</p>
+            <p>Email: vihant724@gmail.com</p></div>
+          <div style="flex: 1; text-align: center;">
+        <img src="  <div style="flex: 1; text-align: center;">
+        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/1f3d773b-0aa3-42f7-bde6-6843725abae5.png" 
+             style="width: 70%; max-width: 700px; border-radius: 20px;">
+    </div>
         </section>
-    </div>
-    </div>
 
     <footer>
         <p>&copy; 2025 COLLAB HUB. All rights reserved.</p>
