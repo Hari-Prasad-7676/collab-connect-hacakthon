@@ -12,13 +12,6 @@ onAuthStateChanged(auth, (user) => {
 });
 
 
-async function saveProfile() {
-  if (!currentUser) {
-    alert("User not loaded. Wait a moment and try again.");
-    return;
-  }
-
-
   const name = document.getElementById("name").value.trim();
   const role = document.getElementById("role").value.trim();
   const category = document.getElementById("category").value.trim();
